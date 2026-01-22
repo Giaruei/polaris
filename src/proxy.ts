@@ -2,13 +2,19 @@
  * @Author: giaruei
  * @Date: 2026-01-09 11:33:13
  * @LastEditors: Joshua.Cai Joshua.Cai@agilex.ai
- * @LastEditTime: 2026-01-09 11:33:15
+ * @LastEditTime: 2026-01-22 11:59:46
  * @FilePath: /polaris/src/proxy.ts
  * @Description:
  */
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-export default clerkMiddleware();
+const isPublicRoute = createRouteMatcher(["api/inngest(.*)"]);
+
+export default clerkMiddleware(async (auth, req) => {
+  if (isPublicRoute(req)) {
+    await auth.protect();
+  }
+});
 
 export const config = {
   matcher: [
