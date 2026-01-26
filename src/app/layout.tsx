@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' suppressContentEditableWarning>
+    <html lang='en' suppressHydrationWarning>
       <body className={`${inter.variable} ${ibmPlexMono.variable} antialiased`}>
         <Providers>{children}</Providers>
       </body>

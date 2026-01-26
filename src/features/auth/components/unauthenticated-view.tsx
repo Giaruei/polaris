@@ -9,6 +9,7 @@ import {
   ItemTitle,
 } from "@/components/ui/item";
 import { Button } from "@/components/ui/button";
+import { SignInButton } from "@clerk/nextjs";
 
 export const UnauthenticatedView = () => {
   return (
@@ -25,9 +26,11 @@ export const UnauthenticatedView = () => {
             </ItemDescription>
           </ItemContent>
           <ItemActions>
-            <Button variant='outline' size='sm'>
-              Sign In
-            </Button>
+            <SignInButton>
+              <Button variant='outline' size='sm'>
+                Sign In
+              </Button> 
+            </SignInButton>
           </ItemActions>
         </Item>
       </div>
