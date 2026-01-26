@@ -8,7 +8,12 @@ const google = createGoogleGenerativeAI({
 export async function POST() {
   const response = await generateText({
     model: google("gemini-2.5-flash"),
-    prompt: "为我制定一份五分化的健身计划",
+    prompt: "你死了吗",
+    experimental_telemetry: {
+      isEnabled: true,
+      recordInputs: true,
+      recordOutputs: true,
+    },
   });
 
   return Response.json({ response });
